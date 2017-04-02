@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVaultBuild.Core", "KeyVaultBuild.Core\KeyVaultBuild.Core.csproj", "{A3F02EBC-9146-4A94-9E56-36EB8BB29492}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVaultBuild.Tests", "KeyVaultBuild.Tests\KeyVaultBuild.Tests.csproj", "{A95FB89D-9AFE-4A6E-AE3C-DB0F76068604}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVaultBuild.Cli", "KeyVaultBuild.Cli\KeyVaultBuild.Cli.csproj", "{7FE96355-4846-47EA-829C-75E150443E39}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A3F02EBC-9146-4A94-9E56-36EB8BB29492}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3F02EBC-9146-4A94-9E56-36EB8BB29492}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3F02EBC-9146-4A94-9E56-36EB8BB29492}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3F02EBC-9146-4A94-9E56-36EB8BB29492}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A95FB89D-9AFE-4A6E-AE3C-DB0F76068604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A95FB89D-9AFE-4A6E-AE3C-DB0F76068604}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A95FB89D-9AFE-4A6E-AE3C-DB0F76068604}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A95FB89D-9AFE-4A6E-AE3C-DB0F76068604}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FE96355-4846-47EA-829C-75E150443E39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FE96355-4846-47EA-829C-75E150443E39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FE96355-4846-47EA-829C-75E150443E39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FE96355-4846-47EA-829C-75E150443E39}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
