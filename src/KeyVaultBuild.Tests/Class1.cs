@@ -1,4 +1,5 @@
-﻿using KeyVaultBuild.Core.Features.Authentication;
+﻿using KeyVaultBuild.Core;
+using KeyVaultBuild.Core.Features.Authentication;
 using KeyVaultBuild.Core.Features.Config;
 using KeyVaultBuild.Core.Features.Operations;
 using NUnit.Framework;
@@ -16,6 +17,18 @@ namespace KeyVaultBuild.Tests
             var client = new AuthedClient(token);
 
             var reader = new ReadKey(client, "keyvaultbuild", "test");
+            var result = reader.ExecuteAsync().Result;
+
+            Assert.AreEqual("test", result);
+        }
+
+        [Test]
+        public void SecretServiceTest()
+        {
+            var config = new Configuration { Directory = "773ff5d6-d53c-4063-baa2-8e542336ee29" };
+            var s = new SecretService(config);
+            var reader = s.ResolveSingleKey("#{keyvault:keyvaultbuild:test}");
+
             var result = reader.ExecuteAsync().Result;
 
             Assert.AreEqual("test", result);
