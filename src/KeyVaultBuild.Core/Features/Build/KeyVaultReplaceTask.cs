@@ -19,7 +19,7 @@ namespace KeyVaultBuild.Features.Build
 
         public string DirectoryId { get; set; }
 
-        public string OverrideVaults { get; set; }
+        public string VaultAliases { get; set; }
 
         public string DebugTask { get; set; }
 
@@ -27,7 +27,7 @@ namespace KeyVaultBuild.Features.Build
         {
             var debug = string.Equals("true", DebugTask, StringComparison.OrdinalIgnoreCase);
             Config.Log.Information = x => Log.LogMessage(x);
-            Config.Log.Error = (ex, m) => Log.LogError("Error occured processing secrets. " + Environment.NewLine + ex);
+            Config.Log.Error = (ex, m) => Log.LogError("Error while processing secrets from keyvault. " + Environment.NewLine + ex);
 
             try
             {
@@ -39,10 +39,19 @@ namespace KeyVaultBuild.Features.Build
 
                 var service = SecretServiceBuilder.Create()
                     .WithDirectory(DirectoryId)
-                    .WithServicePrincipal(ClientId, Secret)
-                    .Build();
-                var transformKey = new TransformKeys(service);
+                    .WithServicePrincipal(ClientId, Secret);
 
+                if (!string.IsNullOrEmpty(VaultAliases))
+                {
+                    foreach (var alias in VaultAliases.Split(new [] { ';' }, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        var pair = alias.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
+                        service.WithVaultAlias(pair.First(), pair.Last());
+                        Log.LogWarning("Overriding vault '{0}' with '{1}'", pair.First(), pair.Last());
+                    }
+                }
+
+                var transformKey = new TransformKeys(service.Build());
                 var files = ConfigFiles.Select(file => file.GetMetadata("Fullpath")).ToArray();
 
                 Parallel.ForEach(files, file =>

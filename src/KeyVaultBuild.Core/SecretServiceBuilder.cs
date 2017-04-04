@@ -1,4 +1,5 @@
-﻿using KeyVaultBuild.Features.Config;
+﻿using System.Collections.Generic;
+using KeyVaultBuild.Features.Config;
 
 namespace KeyVaultBuild
 {
@@ -14,6 +15,12 @@ namespace KeyVaultBuild
         public SecretServiceBuilder WithDirectory(string directoryId)
         {
             _config.Directory = directoryId;
+            return this;
+        }
+
+        public SecretServiceBuilder WithVaultAlias(string vaultAlias, string vault)
+        {
+            _config.VaultAliases[vaultAlias] = vault;
             return this;
         }
 

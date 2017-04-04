@@ -13,6 +13,7 @@ namespace KeyVaultBuild
     {
         private readonly AuthedClient _client;
         private readonly IDictionary<string, ReadKey> _keyCache = new ConcurrentDictionary<string, ReadKey>();
+        private readonly IDictionary<string,string> _vaultAliases;
 
         public SecretService(Configuration config)
         {
@@ -24,6 +25,7 @@ namespace KeyVaultBuild
                 tokenProvider = new InteractiveAuthToken(config);
 
             _client = new AuthedClient(tokenProvider);
+            _vaultAliases = config.VaultAliases;
         }
 
         public ReadKey ResolveSingleKey(string keySyntax)
@@ -41,6 +43,9 @@ namespace KeyVaultBuild
 
             var vault = raw.First();
             var key = raw.Last();
+
+            if (_vaultAliases.ContainsKey(vault))
+                vault = _vaultAliases[vault];
 
             var cacheKey = $"{vault}:{key}";
             if (_keyCache.ContainsKey(cacheKey) == false)

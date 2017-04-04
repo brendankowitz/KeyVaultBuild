@@ -5,7 +5,7 @@
       ReplaceKeyVaultBuildPlaceholders;
       $(BuildDependsOn)
     </BuildDependsOn>
-    <KeyVaultBuild_OverrideVaults Condition=" '$(KeyVaultBuild_OverrideVaults)' == '' "></KeyVaultBuild_OverrideVaults>
+    <KeyVaultBuild_VaultAliases Condition=" '$(KeyVaultBuild_VaultAliases)' == '' "></KeyVaultBuild_VaultAliases>
     <KeyVaultBuild_ClientId Condition=" '$(KeyVaultBuild_ClientId)' == '' "></KeyVaultBuild_ClientId>
     <KeyVaultBuild_Secret Condition=" '$(KeyVaultBuild_Secret)' == '' "></KeyVaultBuild_Secret>
     <KeyVaultBuild_DirectoryId Condition=" '$(KeyVaultBuild_DirectoryId)' == '' "></KeyVaultBuild_DirectoryId>
@@ -18,7 +18,7 @@
   <Target Name="ReplaceKeyVaultBuildPlaceholders">
     <KeyVaultReplaceTask
       ConfigFiles="@(ConfigFilesToProcess)"
-      OverrideVaults="$(KeyVaultBuild_OverrideVaults)"
+      VaultAliases="$(KeyVaultBuild_VaultAliases)"
       ClientId="$(KeyVaultBuild_ClientId)"
       Secret="$(KeyVaultBuild_Secret)" 
       DirectoryId="$(KeyVaultBuild_DirectoryId)"

@@ -1,4 +1,6 @@
-﻿namespace KeyVaultBuild.Features.Config
+﻿using System.Collections.Generic;
+
+namespace KeyVaultBuild.Features.Config
 {
     public class Configuration
     {
@@ -23,5 +25,7 @@
             get { return _servicePrincipalSecret; }
             set { _servicePrincipalSecret = value?.Trim(); }
         }
+
+        public IDictionary<string,string> VaultAliases { get; } = new Dictionary<string, string>();
     }
 }
