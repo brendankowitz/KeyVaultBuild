@@ -26,7 +26,7 @@ namespace KeyVaultBuild.Features.Build
         public override bool Execute()
         {
             var debug = string.Equals("true", DebugTask, StringComparison.OrdinalIgnoreCase);
-            Config.Log.Information = x => Log.LogMessage(x);
+            Config.Log.Information = x => Log.LogWarning(x);
             Config.Log.Error = (ex, m) => Log.LogError("Error while processing secrets from keyvault. " + Environment.NewLine + ex);
 
             try
@@ -43,7 +43,7 @@ namespace KeyVaultBuild.Features.Build
 
                 if (!string.IsNullOrEmpty(VaultAliases))
                 {
-                    foreach (var alias in VaultAliases.Split(new [] { ';' }, StringSplitOptions.RemoveEmptyEntries))
+                    foreach (var alias in VaultAliases?.Trim().Split(new [] { ';' }, StringSplitOptions.RemoveEmptyEntries))
                     {
                         var pair = alias.Split(new[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
                         service.WithVaultAlias(pair.First(), pair.Last());
