@@ -27,7 +27,7 @@ namespace KeyVaultBuild.Features.Build
         {
             var debug = string.Equals("true", DebugTask, StringComparison.OrdinalIgnoreCase);
             Config.Log.Information = x => Log.LogMessage(x);
-            Config.Log.Error = (ex, m) => Log.LogMessage("Error occured processing secrets. " + Environment.NewLine + ex);
+            Config.Log.Error = (ex, m) => Log.LogError("Error occured processing secrets. " + Environment.NewLine + ex);
 
             try
             {
