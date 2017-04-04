@@ -48,5 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KeyVaultBuild.Core\KeyVaultBuild.csproj">
+      <Project>{a3f02ebc-9146-4a94-9e56-36eb8bb29492}</Project>
+      <Name>KeyVaultBuild</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

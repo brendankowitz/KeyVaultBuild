@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using KeyVaultBuild.Features.Config;
 using Microsoft.Azure.KeyVault;
 
 namespace KeyVaultBuild.Features.Operations
@@ -21,6 +22,7 @@ namespace KeyVaultBuild.Features.Operations
         {
             if (string.IsNullOrEmpty(_cachedSecret))
             {
+                Log.Information($"Reading key '{Key}' from '{Vault}'");
                 var secret = await _client.KeyVault.GetSecretAsync($"https://{Vault}.vault.azure.net/", Key);
                 _cachedSecret = secret.Value;
             }

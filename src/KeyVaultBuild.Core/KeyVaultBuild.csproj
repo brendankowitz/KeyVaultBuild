@@ -78,13 +78,15 @@
   <ItemGroup>
     <Compile Include="Features\Authentication\InteractiveAuthToken.cs" />
     <Compile Include="Features\Authentication\IAuthToken.cs" />
+    <Compile Include="Features\Authentication\ServicePrincipalAuthToken.cs" />
     <Compile Include="Features\Build\KeyVaultReplaceTask.cs" />
-    <Compile Include="Features\Transformation\TransformFile.cs" />
+    <Compile Include="SecretServiceBuilder.cs" />
+    <Compile Include="Features\Transformation\TransformFileExtensions.cs" />
     <Compile Include="Features\Config\Configuration.cs" />
     <Compile Include="Features\Config\Log.cs" />
     <Compile Include="Features\Operations\AuthedClient.cs" />
     <Compile Include="Features\Operations\ReadKey.cs" />
-    <Compile Include="Features\Transformation\TransformKey.cs" />
+    <Compile Include="Features\Transformation\TransformKeys.cs" />
     <Compile Include="ISecretService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecretService.cs" />

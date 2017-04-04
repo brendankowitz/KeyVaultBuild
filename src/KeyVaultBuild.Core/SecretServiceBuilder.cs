@@ -1,0 +1,32 @@
+﻿using KeyVaultBuild.Features.Config;
+
+namespace KeyVaultBuild
+{
+    public class SecretServiceBuilder
+    {
+        private readonly Configuration _config = new Configuration();
+
+        public static SecretServiceBuilder Create()
+        {
+            return new SecretServiceBuilder();
+        }
+
+        public SecretServiceBuilder WithDirectory(string directoryId)
+        {
+            _config.Directory = directoryId;
+            return this;
+        }
+
+        public SecretServiceBuilder WithServicePrincipal(string servicePrincipal, string secret)
+        {
+            _config.ServicePrincipal = servicePrincipal;
+            _config.ServicePrincipalSecret = secret;
+            return this;
+        }
+
+        public ISecretService Build()
+        {
+            return new SecretService(_config);
+        }
+    }
+}

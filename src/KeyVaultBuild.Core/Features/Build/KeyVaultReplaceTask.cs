@@ -1,8 +1,5 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using KeyVaultBuild.Features.Authentication;
-using KeyVaultBuild.Features.Config;
-using KeyVaultBuild.Features.Operations;
 using KeyVaultBuild.Features.Transformation;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
@@ -24,9 +21,11 @@ namespace KeyVaultBuild.Features.Build
 
         public override bool Execute()
         {
-            var config = new Configuration { Directory = DirectoryId };
-            var service = new SecretService(config);
-            var transformKey = new TransformKey(service);
+            var service = SecretServiceBuilder.Create()
+                .WithDirectory(DirectoryId)
+                .WithServicePrincipal(ClientId, Secret)
+                .Build();
+            var transformKey = new TransformKeys(service);
 
             var files = ConfigFiles.Select(file => file.GetMetadata("Fullpath")).ToArray();
 

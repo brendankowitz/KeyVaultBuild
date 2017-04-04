@@ -3,24 +3,24 @@ using System.Threading.Tasks;
 
 namespace KeyVaultBuild.Features.Transformation
 {
-    public class TransformKey
+    public class TransformKeys
     {
         private readonly ISecretService _secretService;
-        private static readonly Regex s_configRegex = new Regex(@"(?<keyvault>(?<=\#{keyvault:)[^}]*(?=\}))", RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.Compiled);
+        private static readonly Regex KeyRegex = new Regex(@"(?<keyvault>\#{keyvault:[a-zA-Z:]*})", RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.Compiled);
 
-        public TransformKey(ISecretService secretService)
+        public TransformKeys(ISecretService secretService)
         {
             _secretService = secretService;
         }
 
         public static bool IsKeySyntax(string keySyntax)
         {
-            return s_configRegex.IsMatch(keySyntax);
+            return KeyRegex.IsMatch(keySyntax);
         }
 
         public string ReplaceKeys(string content)
         {
-            return s_configRegex.Replace(content, Evaluator);
+            return KeyRegex.Replace(content, Evaluator);
         }
 
         private string Evaluator(Match match)

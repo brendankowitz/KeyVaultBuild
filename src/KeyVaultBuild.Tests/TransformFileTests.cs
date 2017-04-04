@@ -1,8 +1,5 @@
-﻿using System.IO;
-using KeyVaultBuild.Features.Config;
-using KeyVaultBuild.Features.Transformation;
+﻿using KeyVaultBuild.Features.Transformation;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 
 namespace KeyVaultBuild.Tests
 {
@@ -12,10 +9,11 @@ namespace KeyVaultBuild.Tests
         [Test]
         public void TransformFile()
         {
-            var config = new Configuration { Directory = "773ff5d6-d53c-4063-baa2-8e542336ee29" };
-            var service = new SecretService(config);
+            var service = SecretServiceBuilder.Create()
+                .WithDirectory("773ff5d6-d53c-4063-baa2-8e542336ee29")
+                .Build();
 
-            var keys = new TransformKey(service);
+            var keys = new TransformKeys(service);
 
             var snippet = @"<?xml version=""1.0"" encoding=""utf-8""?>
 <configuration>
@@ -25,7 +23,17 @@ namespace KeyVaultBuild.Tests
   </appSettings>
 </configuration>";
 
+            var expected = @"<?xml version=""1.0"" encoding=""utf-8""?>
+<configuration>
+  <appSettings>
+    <add key=""key1"" value=""test"" />
+    <add key=""key2"" value=""test"" />
+  </appSettings>
+</configuration>";
+
             var val = keys.ReplaceKeys(snippet);
+
+            Assert.AreEqual(expected, val);
         }
     }
 }

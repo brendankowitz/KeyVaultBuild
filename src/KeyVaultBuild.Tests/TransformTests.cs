@@ -9,13 +9,13 @@ namespace KeyVaultBuild.Tests
         [Test]
         public void TestRegex()
         {
-            Assert.IsTrue(TransformKey.IsKeySyntax("#{keyvault:keyvaultbuild:test}"));
+            Assert.IsTrue(TransformKeys.IsKeySyntax("#{keyvault:keyvaultbuild:test}"));
         }
 
         [Test]
         public void ReplaceInContentTest()
         {
-            Assert.IsTrue(TransformKey.IsKeySyntax("#{keyvault:keyvaultbuild:test}"));
+            Assert.IsTrue(TransformKeys.IsKeySyntax("#{keyvault:keyvaultbuild:test}"));
         }
     }
 }

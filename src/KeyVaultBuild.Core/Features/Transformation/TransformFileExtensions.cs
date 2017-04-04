@@ -5,9 +5,9 @@ using System.Text;
 
 namespace KeyVaultBuild.Features.Transformation
 {
-    public static class TransformFile
+    public static class TransformFileExtensions
     {
-        public static void SaveAsFile(this TransformKey transform, string templatePath)
+        public static void SaveAsFile(this TransformKeys transform, string templatePath)
         {
             var info = new FileInfo(templatePath);
             var destinationPath = Path.Combine(info.DirectoryName, info.Name.Replace(".keyvault.config", ".config"));

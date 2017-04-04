@@ -3,8 +3,7 @@
     public class Configuration
     {
         public string Directory { get; set; }
-        public string Resource { get; set; }
-
-        public bool Interactive { get; set; } = true;
+        public string ServicePrincipal { get; set; }
+        public string ServicePrincipalSecret { get; set; }
     }
 }
