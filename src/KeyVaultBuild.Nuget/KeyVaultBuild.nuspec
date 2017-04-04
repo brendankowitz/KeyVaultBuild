@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>KeyVaultBuild</id>
+    <version>0.0.0.0</version>
+    <authors>Brendan Kowitz</authors>
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Pulls values from KeyVault during the build process.</description>
+    <summary>Pulls values from KeyVault during the build process</summary>
+    <language>en-US</language>
+    <title>KeyVault Build Task</title>
+    <projectUrl>https://github.com/brendankowitz/KeyVaultBuild</projectUrl>
+  </metadata>
+</package>

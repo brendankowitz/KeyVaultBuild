@@ -10,7 +10,7 @@ namespace KeyVaultBuild.Features.Transformation
         public static void SaveAsFile(this TransformKeys transform, string templatePath)
         {
             var info = new FileInfo(templatePath);
-            var destinationPath = Path.Combine(info.DirectoryName, info.Name.Replace(".keyvault.config", ".config"));
+            var destinationPath = Path.Combine(info.DirectoryName, info.Name.Replace(".keyvault.template", ".config"));
 
             var content = File.ReadAllText(templatePath);
             var hash = Hash(content);
