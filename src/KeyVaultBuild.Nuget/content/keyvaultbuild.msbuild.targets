@@ -13,9 +13,9 @@
   <ItemGroup>
     <ConfigFilesToProcess Include="$(ProjectDir)\**\*.keyvault.template" />
   </ItemGroup>
-  <UsingTask TaskName="KeyVaultBuild" AssemblyFile="$(SolutionDir)\packages\KeyVaultBuild\KeyVaultBuild.dll" />
+  <UsingTask TaskName="KeyVaultReplaceTask" AssemblyFile="$(SolutionDir)\packages\KeyVaultBuild\KeyVaultBuild.dll" />
   <Target Name="ReplaceKeyVaultBuildPlaceholders">
-    <KeyVaultBuild 
+    <KeyVaultReplaceTask
       ConfigFiles="@(ConfigFilesToProcess)"
       OverrideVaults="$(KeyVaultBuild_OverrideVaults)"
       ClientId="$(KeyVaultBuild_ClientId)"

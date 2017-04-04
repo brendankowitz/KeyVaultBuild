@@ -53,13 +53,17 @@
     <Compile Include="TransformTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App.keyvault.config" />
+    <None Include="App.keyvault.template" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KeyVaultBuild.Core\KeyVaultBuild.csproj">
       <Project>{a3f02ebc-9146-4a94-9e56-36eb8bb29492}</Project>
       <Name>KeyVaultBuild</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KeyVaultBuild.Nuget\KeyVaultBuild.Nuget.csproj">
+      <Project>{3e815826-5730-4a1b-94d8-966b370194f4}</Project>
+      <Name>KeyVaultBuild.Nuget</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
