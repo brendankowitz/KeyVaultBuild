@@ -9,6 +9,12 @@ namespace KeyVaultBuild.Tests
         [Test]
         public void TestRegex()
         {
+            Assert.IsTrue(TransformKeys.IsKeySyntax("#{keyvault:keyvaultbuild-pre:test}"));
+        }
+
+        [Test]
+        public void TestRegexNoDash()
+        {
             Assert.IsTrue(TransformKeys.IsKeySyntax("#{keyvault:keyvaultbuild:test}"));
         }
 
