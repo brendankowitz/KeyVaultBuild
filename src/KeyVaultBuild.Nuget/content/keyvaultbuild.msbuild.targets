@@ -9,6 +9,7 @@
     <KeyVaultBuild_ClientId Condition=" '$(KeyVaultBuild_ClientId)' == '' "></KeyVaultBuild_ClientId>
     <KeyVaultBuild_Secret Condition=" '$(KeyVaultBuild_Secret)' == '' "></KeyVaultBuild_Secret>
     <KeyVaultBuild_DirectoryId Condition=" '$(KeyVaultBuild_DirectoryId)' == '' "></KeyVaultBuild_DirectoryId>
+    <KeyVaultBuild_Debug Condition=" '$(KeyVaultBuild_Debug)' == '' "></KeyVaultBuild_Debug>
   </PropertyGroup>
   <ItemGroup>
     <ConfigFilesToProcess Include="$(ProjectDir)\**\*.keyvault.template" />
@@ -20,7 +21,8 @@
       OverrideVaults="$(KeyVaultBuild_OverrideVaults)"
       ClientId="$(KeyVaultBuild_ClientId)"
       Secret="$(KeyVaultBuild_Secret)" 
-      DirectoryId="$(KeyVaultBuild_DirectoryId)" />
+      DirectoryId="$(KeyVaultBuild_DirectoryId)"
+      DebugTask="$(KeyVaultBuild_Debug)" />
   </Target>
   <Target Name="KeyVaultBuildAfterBuild" AfterTargets="AfterBuild">
     <ItemGroup>
