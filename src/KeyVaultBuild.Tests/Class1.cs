@@ -1,7 +1,6 @@
-﻿using KeyVaultBuild.Core;
-using KeyVaultBuild.Core.Features.Authentication;
-using KeyVaultBuild.Core.Features.Config;
-using KeyVaultBuild.Core.Features.Operations;
+﻿using KeyVaultBuild.Features.Authentication;
+using KeyVaultBuild.Features.Config;
+using KeyVaultBuild.Features.Operations;
 using NUnit.Framework;
 
 namespace KeyVaultBuild.Tests

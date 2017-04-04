@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KeyVaultBuild.Core.Features.Config
+namespace KeyVaultBuild.Features.Config
 {
     public class Log
     {

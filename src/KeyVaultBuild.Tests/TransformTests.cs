@@ -1,4 +1,4 @@
-﻿using KeyVaultBuild.Core.Features.Transformation;
+﻿using KeyVaultBuild.Features.Transformation;
 using NUnit.Framework;
 
 namespace KeyVaultBuild.Tests
@@ -9,7 +9,13 @@ namespace KeyVaultBuild.Tests
         [Test]
         public void TestRegex()
         {
-            Assert.IsTrue(KeyTransform.IsKeySyntax("#{keyvault:keyvaultbuild:test}"));
+            Assert.IsTrue(TransformKey.IsKeySyntax("#{keyvault:keyvaultbuild:test}"));
+        }
+
+        [Test]
+        public void ReplaceInContentTest()
+        {
+            Assert.IsTrue(TransformKey.IsKeySyntax("#{keyvault:keyvaultbuild:test}"));
         }
     }
 }

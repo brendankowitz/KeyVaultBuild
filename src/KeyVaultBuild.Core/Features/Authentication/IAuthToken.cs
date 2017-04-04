@@ -1,4 +1,4 @@
-﻿namespace KeyVaultBuild.Core.Features.Authentication
+﻿namespace KeyVaultBuild.Features.Authentication
 {
     public interface IAuthToken
     {

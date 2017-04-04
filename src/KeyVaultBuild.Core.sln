@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVaultBuild.Core", "KeyVaultBuild.Core\KeyVaultBuild.Core.csproj", "{A3F02EBC-9146-4A94-9E56-36EB8BB29492}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVaultBuild", "KeyVaultBuild.Core\KeyVaultBuild.csproj", "{A3F02EBC-9146-4A94-9E56-36EB8BB29492}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVaultBuild.Tests", "KeyVaultBuild.Tests\KeyVaultBuild.Tests.csproj", "{A95FB89D-9AFE-4A6E-AE3C-DB0F76068604}"
 EndProject

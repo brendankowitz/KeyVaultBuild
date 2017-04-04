@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using KeyVaultBuild.Core.Features.Authentication;
-using KeyVaultBuild.Core.Features.Config;
-using KeyVaultBuild.Core.Features.Operations;
-using KeyVaultBuild.Core.Features.Transformation;
+using KeyVaultBuild.Features.Authentication;
+using KeyVaultBuild.Features.Config;
+using KeyVaultBuild.Features.Operations;
+using KeyVaultBuild.Features.Transformation;
 
-namespace KeyVaultBuild.Core
+namespace KeyVaultBuild
 {
-    public class SecretService
+    public class SecretService : ISecretService
     {
         private readonly AuthedClient _client;
         private readonly IDictionary<string, ReadKey> _keyCache = new Dictionary<string, ReadKey>();
@@ -21,7 +20,7 @@ namespace KeyVaultBuild.Core
 
         public ReadKey ResolveSingleKey(string keySyntax)
         {
-            if(KeyTransform.IsKeySyntax(keySyntax) == false)
+            if(TransformKey.IsKeySyntax(keySyntax) == false)
                 throw new Exception("Invalid key syntax");
 
             var raw = keySyntax.Trim('#', '{', '}').Split(':').Skip(1).ToArray();

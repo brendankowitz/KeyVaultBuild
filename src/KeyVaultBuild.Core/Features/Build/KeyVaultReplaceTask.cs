@@ -1,11 +1,13 @@
 ﻿using System.Linq;
-using KeyVaultBuild.Core.Features.Authentication;
-using KeyVaultBuild.Core.Features.Config;
-using KeyVaultBuild.Core.Features.Operations;
+using System.Threading.Tasks;
+using KeyVaultBuild.Features.Authentication;
+using KeyVaultBuild.Features.Config;
+using KeyVaultBuild.Features.Operations;
+using KeyVaultBuild.Features.Transformation;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 
-namespace KeyVaultBuild.Core.Features.Build
+namespace KeyVaultBuild.Features.Build
 {
     public class KeyVaultReplaceTask : AppDomainIsolatedTask
     {
@@ -23,10 +25,15 @@ namespace KeyVaultBuild.Core.Features.Build
         public override bool Execute()
         {
             var config = new Configuration { Directory = DirectoryId };
-            var auth = new InteractiveAuthToken(config);
-            var client = new AuthedClient(auth);
+            var service = new SecretService(config);
+            var transformKey = new TransformKey(service);
 
             var files = ConfigFiles.Select(file => file.GetMetadata("Fullpath")).ToArray();
+
+            Parallel.ForEach(files, file =>
+            {
+                transformKey.SaveAsFile(file);
+            });
 
             return true;
         }

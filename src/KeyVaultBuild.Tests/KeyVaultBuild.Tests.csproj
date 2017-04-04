@@ -44,16 +44,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="HashTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransformFileTests.cs" />
     <Compile Include="TransformTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App.keyvault.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KeyVaultBuild.Core\KeyVaultBuild.Core.csproj">
+    <ProjectReference Include="..\KeyVaultBuild.Core\KeyVaultBuild.csproj">
       <Project>{a3f02ebc-9146-4a94-9e56-36eb8bb29492}</Project>
-      <Name>KeyVaultBuild.Core</Name>
+      <Name>KeyVaultBuild</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading;
-using KeyVaultBuild.Core.Features.Config;
+using KeyVaultBuild.Features.Config;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-namespace KeyVaultBuild.Core.Features.Authentication
+namespace KeyVaultBuild.Features.Authentication
 {
     public class InteractiveAuthToken : IAuthToken
     {

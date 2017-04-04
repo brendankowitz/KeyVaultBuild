@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using KeyVaultBuild.Core.Features.Authentication;
+using KeyVaultBuild.Features.Authentication;
 using Microsoft.Azure.KeyVault;
 
-namespace KeyVaultBuild.Core.Features.Operations
+namespace KeyVaultBuild.Features.Operations
 {
     public class AuthedClient
     {

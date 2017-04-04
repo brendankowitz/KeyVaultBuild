@@ -1,8 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.Azure.KeyVault;
 
-namespace KeyVaultBuild.Core.Features.Operations
+namespace KeyVaultBuild.Features.Operations
 {
     public class ReadKey
     {
