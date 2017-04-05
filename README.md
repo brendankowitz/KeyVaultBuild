@@ -2,7 +2,9 @@
 
 ## Getting started
 
+```
 Install-Package KeyVaultBuildTask
+```
 
 ### Converting config files to templates
 
@@ -39,7 +41,7 @@ In the following key `#{keyvault:keyvaultbuild:appsetting-key1password}`, the fi
 
 Development:
 
-To use interactive login, which is the preferred mode during development, you only need to specify the AAD directory which the developers with authenticate against `KeyVaultBuild_DirectoryId`. When a key is needed a login modal will be presented for the developer to login, if they have fetch access on the specified keyvault the key is retreived and the config file will be created.
+To use interactive login, which is the preferred mode during development, you only need to specify the AAD directory (`KeyVaultBuild_DirectoryId`) which  developers can authenticate against. When a key is needed a login modal will be presented for the developer to login, if they have fetch access on the specified keyvault the key is retreived and the config file will be created.
 
 Build server:
 
