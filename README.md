@@ -12,9 +12,9 @@ A CLI tool is provided to help convert your existing files into .keyvault.templa
 
 An example of how to do this is as follows:
 ```
-KeyVaultBuild.Cli.exe template -templateFile "c:\full\path\to\App.config"
-                               -aadDirectory <GUID>
-                               -vault keyvaultName
+KeyVaultBuild.Cli.exe template -[configFile|c] "c:\full\path\to\App.config"
+                               -[aadDirectory|d] <GUID>
+                               -[vault|v] keyvaultName
 ```
 
 ### Keytemplate syntax

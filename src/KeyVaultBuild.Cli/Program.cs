@@ -26,7 +26,7 @@ namespace KeyVaultBuild.Cli
                     .Build();
                 var writer = service.GetWriter(opts.Vault);
 
-                var loaded = XDocument.Load(opts.TemplateFile);
+                var loaded = XDocument.Load(opts.ConfigFile);
                 var appSettings = loaded.Descendants("appSettings").Descendants("add")
                     .Where( x => ((string) x.Attribute("key")).ToLower().Contains("password") || ((string) x.Attribute("key")).ToLower().Contains("secret"));
 
@@ -56,7 +56,7 @@ namespace KeyVaultBuild.Cli
                     }
                 }
 
-                var file = new FileInfo(opts.TemplateFile);
+                var file = new FileInfo(opts.ConfigFile);
                 var templateFile = Path.Combine(file.DirectoryName, file.Name.Replace(file.Extension, ".keyvault.template"));
                 loaded.Save(File.OpenWrite(templateFile));
 
