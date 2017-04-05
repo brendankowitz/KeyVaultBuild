@@ -21,11 +21,19 @@ namespace KeyVaultBuild
 
             if (!string.IsNullOrEmpty(config.ServicePrincipal) && !string.IsNullOrEmpty(config.ServicePrincipalSecret))
                 tokenProvider = new ServicePrincipalAuthToken(config);
-            else
+            else if (!string.IsNullOrEmpty(config.Directory))
                 tokenProvider = new InteractiveAuthToken(config);
+            else
+                throw new Exception("No KeyVault auth provider could be used. Please provide a directoryId or clientId");
 
             _client = new AuthedClient(tokenProvider);
             _vaultAliases = config.VaultAliases;
+        }
+
+        public SecretService(AuthedClient client, IDictionary<string, string> vaultAliases = null)
+        {
+            _client = client;
+            _vaultAliases = vaultAliases;
         }
 
         public ReadKey ResolveSingleKey(string keySyntax)

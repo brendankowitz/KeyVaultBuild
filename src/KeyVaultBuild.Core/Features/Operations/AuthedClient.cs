@@ -7,7 +7,12 @@ namespace KeyVaultBuild.Features.Operations
     public class AuthedClient
     {
         private readonly IAuthToken _token;
-        public KeyVaultClient KeyVault { get; }
+        public IKeyVaultClient KeyVault { get; }
+
+        public AuthedClient(IKeyVaultClient keyVault)
+        {
+            KeyVault = keyVault;
+        }
 
         public AuthedClient(IAuthToken token)
         {
