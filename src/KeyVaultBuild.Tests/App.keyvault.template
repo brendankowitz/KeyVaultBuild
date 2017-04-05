@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <appSettings>
-    <add key="key1" value="#{keyvault:keyvaultbuild:test}" />
-    <add key="key2" value="#{keyvault:keyvaultbuild:test}" />
+    <add key="key1password" value="#{keyvault:keyvaultbuild:appsetting-key1password}" />
+    <add key="key2secret" value="#{keyvault:keyvaultbuild:appsetting-key2secret}" />
+    <add key="key3" value="test3" />
   </appSettings>
+  <connectionStrings>
+    <add connectionString="blah" name="hey" conectionString="#{keyvault:keyvaultbuild:connectionstring-hey}" />
+  </connectionStrings>
 </configuration>

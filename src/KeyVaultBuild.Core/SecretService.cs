@@ -61,5 +61,13 @@ namespace KeyVaultBuild
 
             return _keyCache[cacheKey];
         }
+
+        public WriteKey GetWriter(string vault)
+        {
+            if (_vaultAliases.ContainsKey(vault))
+                vault = _vaultAliases[vault];
+
+            return new WriteKey(_client, vault);
+        }
     }
 }

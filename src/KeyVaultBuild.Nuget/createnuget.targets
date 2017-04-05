@@ -16,6 +16,7 @@
       <MainBinaries Include="$(BaseDir)KeyVaultBuild.Core\bin\$(Configuration)\**\*.*" />
       <ToolsFiles Include="$(BaseDir)KeyVaultBuild.Nuget\tools\**\*.*" />
       <ContentFiles Include="$(BaseDir)KeyVaultBuild.Nuget\content\**\*.*" />
+      <CliFiles Include="$(BaseDir)KeyVaultBuild.Cli\bin\$(Configuration)\**\*.*" />
     </ItemGroup>
  
     <!-- First copy the nuspec template files to the package dir -->
@@ -25,6 +26,7 @@
     <Copy SourceFiles="@(MainBinaries)" DestinationFolder="$(PackageDir)temp\KeyVaultBuild\tools\%(RecursiveDir)" />
     <Copy SourceFiles="@(ToolsFiles)" DestinationFolder="$(PackageDir)temp\KeyVaultBuild\tools\%(RecursiveDir)" />
     <Copy SourceFiles="@(ContentFiles)" DestinationFolder="$(PackageDir)temp\KeyVaultBuild\content\%(RecursiveDir)" />
+    <Copy SourceFiles="@(CliFiles)" DestinationFolder="$(PackageDir)temp\KeyVaultBuild\tools\%(RecursiveDir)" />
  
     <!-- Get the version number of the main FV assembly to insert into the nuspec files -->
     <GetAssemblyIdentity AssemblyFiles="$(PackageDir)temp\KeyVaultBuild\tools\KeyVaultBuild.dll">

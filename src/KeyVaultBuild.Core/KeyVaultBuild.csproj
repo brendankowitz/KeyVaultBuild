@@ -90,6 +90,7 @@
     <Compile Include="Features\Authentication\IAuthToken.cs" />
     <Compile Include="Features\Authentication\ServicePrincipalAuthToken.cs" />
     <Compile Include="Features\Build\KeyVaultReplaceTask.cs" />
+    <Compile Include="Features\Operations\WriteKey.cs" />
     <Compile Include="SecretServiceBuilder.cs" />
     <Compile Include="Features\Transformation\TransformFileExtensions.cs" />
     <Compile Include="Features\Config\Configuration.cs" />
