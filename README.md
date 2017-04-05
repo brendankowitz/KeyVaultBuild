@@ -37,9 +37,21 @@ In the following key `#{keyvault:keyvaultbuild:appsetting-key1password}`, the fi
 
 ### Using the build task to pull values from keyvault
 
+Development:
+
+To use interactive login, which is the preferred mode during development, you only need to specify the AAD directory which the developers with authenticate against `KeyVaultBuild_DirectoryId`. When a key is needed a login modal will be presented for the developer to login, if they have fetch access on the specified keyvault the key is retreived and the config file will be created.
+
+Build server:
+
+On the build server a service principal can be used to fetch the keys, in this case the `ClientId` and `Secret` should also be specified.
+
 ```
 <KeyVaultBuild_VaultAliases Condition=" '$(KeyVaultBuild_VaultAliases)' == '' "></KeyVaultBuild_VaultAliases>
 <KeyVaultBuild_ClientId Condition=" '$(KeyVaultBuild_ClientId)' == '' "></KeyVaultBuild_ClientId>
 <KeyVaultBuild_Secret Condition=" '$(KeyVaultBuild_Secret)' == '' "></KeyVaultBuild_Secret>
 <KeyVaultBuild_DirectoryId Condition=" '$(KeyVaultBuild_DirectoryId)' == '' "></KeyVaultBuild_DirectoryId>
 ```
+
+### Advanced
+Vault Aliases:
+The setting VaultAlias allows your config files to reference a vault name, for example "myvault" and we can then specify an alias in the Vault Alias setting `myvault:myvault-preprod`. Doing this will force the build task to look in the `myvault-preprod` vault instead of the original that was specified. This can be handy during development and easily overridden on a build server.
