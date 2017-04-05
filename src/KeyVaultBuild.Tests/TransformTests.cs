@@ -19,6 +19,13 @@ namespace KeyVaultBuild.Tests
         }
 
         [Test]
+        public void TestRegexNumbers()
+        {
+            Assert.IsTrue(TransformKeys.IsKeySyntax("#{keyvault:keyvaultbuild:test1230}"));
+        }
+
+
+        [Test]
         public void ReplaceInContentTest()
         {
             Assert.IsTrue(TransformKeys.IsKeySyntax("#{keyvault:keyvaultbuild:test}"));

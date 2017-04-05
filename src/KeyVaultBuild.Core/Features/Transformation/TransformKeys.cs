@@ -6,7 +6,7 @@ namespace KeyVaultBuild.Features.Transformation
     public class TransformKeys
     {
         private readonly ISecretService _secretService;
-        private static readonly Regex KeyRegex = new Regex(@"(?<keyvault>\#{keyvault:[a-zA-Z:\-]*})", RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.Compiled);
+        private static readonly Regex KeyRegex = new Regex(@"(?<keyvault>\#{keyvault:[a-zA-Z0-9:\-]*})", RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.Compiled);
 
         public TransformKeys(ISecretService secretService)
         {
