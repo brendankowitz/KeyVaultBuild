@@ -1,4 +1,4 @@
-# KeyVaultBuild [![Build status](https://ci.appveyor.com/api/projects/status/x4d8swrs91ja9m07?svg=true)](https://ci.appveyor.com/project/brendankowitz/keyvaultbuild)
+# KeyVaultBuild [![Build status](https://ci.appveyor.com/api/projects/status/x4d8swrs91ja9m07?svg=true)](https://ci.appveyor.com/project/brendankowitz/keyvaultbuild) [![NuGet](http://img.shields.io/nuget/v/KeyVaultBuildTask.svg)](https://www.nuget.org/packages/KeyVaultBuildTask/)
 
 ## Getting started
 
