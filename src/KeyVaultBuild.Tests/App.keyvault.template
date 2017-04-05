@@ -6,6 +6,6 @@
     <add key="key3" value="test3" />
   </appSettings>
   <connectionStrings>
-    <add connectionString="blah" name="hey" conectionString="#{keyvault:keyvaultbuild:connectionstring-hey}" />
+    <add name="hey" connectionString="#{keyvault:keyvaultbuild:connectionstring-hey}" />
   </connectionStrings>
 </configuration>

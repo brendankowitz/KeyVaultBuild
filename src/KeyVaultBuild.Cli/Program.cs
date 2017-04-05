@@ -52,7 +52,7 @@ namespace KeyVaultBuild.Cli
                     if (!string.IsNullOrEmpty(keyName) && !string.IsNullOrEmpty(val))
                     {
                         writer.Set(keyName, val).Wait();
-                        setting.SetAttributeValue("conectionString", $"#{{keyvault:{writer.Vault}:{keyName}}}");
+                        setting.SetAttributeValue("connectionString", $"#{{keyvault:{writer.Vault}:{keyName}}}");
                     }
                 }
 
