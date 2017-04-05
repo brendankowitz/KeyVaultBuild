@@ -3,6 +3,7 @@
   <PropertyGroup Label="KeyVaultBuild">
     <BuildDependsOn>
       ReplaceKeyVaultBuildPlaceholders;
+      KeyVaultBuildConfigFiles;
       $(BuildDependsOn)
     </BuildDependsOn>
     <KeyVaultBuild_VaultAliases Condition=" '$(KeyVaultBuild_VaultAliases)' == '' "></KeyVaultBuild_VaultAliases>
@@ -24,19 +25,9 @@
       DirectoryId="$(KeyVaultBuild_DirectoryId)"
       DebugTask="$(KeyVaultBuild_Debug)" />
   </Target>
-  <Target Name="KeyVaultBuildAfterBuild" AfterTargets="AfterBuild">
+  <Target Name="KeyVaultBuildConfigFiles">
     <ItemGroup>
-      <ConfigFilesToCopy Include="$(ProjectDir)config\*.config" />
+      <Content Include="$(MSBuildProjectDirectory)\**\*.config" />
     </ItemGroup>
-    <Copy SourceFiles="@(ConfigFilesToCopy)" DestinationFolder="$(TargetDir)config" />
-  </Target>
-  <Target Name="KeyVaultBuildAdditionalFilesForPackage" AfterTargets="CopyAllFilesToSingleFolderForPackage;CopyAllFilesToSingleFolderForMsDeploy">
-    <ItemGroup>
-      <ConfigFiles Include="$(MSBuildProjectDirectory)\**\*.config" />
-    </ItemGroup>
-    <Copy
-      SourceFiles="@(ConfigFiles)"
-      DestinationFiles="@(ConfigFiles->'$(_PackageTempDir)\config\%(RecursiveDir)%(Filename)%(Extension)')"
-      SkipUnchangedFiles="false" />
   </Target>
 </Project>
