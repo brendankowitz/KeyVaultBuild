@@ -1,4 +1,4 @@
-# KeyVaultBuild
+# KeyVaultBuild [![Build status](https://ci.appveyor.com/api/projects/status/x4d8swrs91ja9m07?svg=true)](https://ci.appveyor.com/project/brendankowitz/keyvaultbuild)
 
 ## Getting started
 
