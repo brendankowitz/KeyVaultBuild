@@ -17,6 +17,13 @@ namespace KeyVaultBuild
 
         public SecretService(Configuration config)
         {
+            var tokenProvider = ResolveTokenProvider(config);
+            _client = new AuthedClient(tokenProvider);
+            _vaultAliases = config.VaultAliases;
+        }
+
+        internal static IAuthToken ResolveTokenProvider(Configuration config)
+        {
             IAuthToken tokenProvider;
 
             if (!string.IsNullOrEmpty(config.ServicePrincipal) && !string.IsNullOrEmpty(config.ServicePrincipalSecret))
@@ -25,9 +32,7 @@ namespace KeyVaultBuild
                 tokenProvider = new InteractiveAuthToken(config);
             else
                 throw new Exception("No KeyVault auth provider could be used. Please provide a directoryId or clientId");
-
-            _client = new AuthedClient(tokenProvider);
-            _vaultAliases = config.VaultAliases;
+            return tokenProvider;
         }
 
         public SecretService(AuthedClient client, IDictionary<string, string> vaultAliases = null)

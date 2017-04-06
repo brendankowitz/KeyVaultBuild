@@ -4,31 +4,24 @@ using NUnit.Framework;
 namespace KeyVaultBuild.Tests
 {
     [TestFixture]
-    public class TransformTests
+    public class WhenCheckingKeySyntax
     {
         [Test]
-        public void TestRegex()
+        public void GivenVaultWithADash()
         {
             Assert.IsTrue(TransformKeys.IsKeySyntax("#{keyvault:keyvaultbuild-pre:test}"));
         }
 
         [Test]
-        public void TestRegexNoDash()
+        public void GivenAVaultWithNoDash()
         {
             Assert.IsTrue(TransformKeys.IsKeySyntax("#{keyvault:keyvaultbuild:test}"));
         }
 
         [Test]
-        public void TestRegexNumbers()
+        public void GivenAKeyWithNumbers()
         {
             Assert.IsTrue(TransformKeys.IsKeySyntax("#{keyvault:keyvaultbuild:test1230}"));
-        }
-
-
-        [Test]
-        public void ReplaceInContentTest()
-        {
-            Assert.IsTrue(TransformKeys.IsKeySyntax("#{keyvault:keyvaultbuild:test}"));
         }
     }
 }
