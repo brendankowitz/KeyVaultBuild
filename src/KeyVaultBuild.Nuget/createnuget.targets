@@ -18,6 +18,8 @@
       <ContentFiles Include="$(BaseDir)KeyVaultBuild.Nuget\content\**\*.*" />
       <CliFiles Include="$(BaseDir)KeyVaultBuild.Cli\bin\$(Configuration)\**\*.*" />
     </ItemGroup>
+
+    <RemoveDir Directories="$(PackageDir)" />
  
     <!-- First copy the nuspec template files to the package dir -->
     <Copy SourceFiles="$(BaseDir)\KeyVaultBuild.Nuget\KeyVaultBuild.nuspec" DestinationFolder="$(PackageDir)temp\KeyVaultBuild" />
@@ -42,5 +44,8 @@
  
     <Exec WorkingDirectory="$(BuildDir)Packages" 
           Command="$(SolutionDir)\packages\NuGet.CommandLine.3.5.0\tools\nuget.exe pack $(PackageDir)temp\KeyVaultBuild\KeyVaultBuild.nuspec" />
+
+    <RemoveDir Directories="$(PackageDir)temp" />
+    
   </Target>
 </Project>
