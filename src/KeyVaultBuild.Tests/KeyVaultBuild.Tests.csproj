@@ -68,7 +68,7 @@
     <Compile Include="WhenCreatingASecretService.cs" />
     <Compile Include="WhenHashing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TransformFileTests.cs" />
+    <Compile Include="WhenTransformingContent.cs" />
     <Compile Include="WhenCheckingKeySyntax.cs" />
   </ItemGroup>
   <ItemGroup>
