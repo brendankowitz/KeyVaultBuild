@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using CommandLine;
 
@@ -28,7 +29,18 @@ namespace KeyVaultBuild.Cli
 
                 var loaded = XDocument.Load(opts.ConfigFile);
                 var appSettings = loaded.Descendants("appSettings").Descendants("add")
-                    .Where( x => ((string) x.Attribute("key")).ToLower().Contains("password") || ((string) x.Attribute("key")).ToLower().Contains("secret"));
+                    .Where(x =>
+                    {
+                        foreach (var pattern in opts.AppSettings)
+                        {
+                            if (Regex.IsMatch((string)x.Attribute("key"), pattern))
+                            {
+                                return true;
+                            }
+                        }
+
+                        return false;
+                    });
 
                 var connectionStrings = loaded.Descendants("connectionStrings").Descendants("add");
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using CommandLine;
 
 namespace KeyVaultBuild.Cli
@@ -13,5 +14,8 @@ namespace KeyVaultBuild.Cli
 
         [Option('v', "vault", Required = true, HelpText = "KeyVault instance to upload values to.")]
         public string Vault { get; set; }
+
+        [Option('a', "appsettings", Separator = ',', Required = false, HelpText = "Which appsettings, comma separated, to push into keyvault. Regex formatted")]
+        public IEnumerable<string> AppSettings { get; set; }
     }
 }
