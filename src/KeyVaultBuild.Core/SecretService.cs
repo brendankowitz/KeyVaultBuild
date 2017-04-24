@@ -38,7 +38,7 @@ namespace KeyVaultBuild
         public SecretService(AuthedClient client, IDictionary<string, string> vaultAliases = null)
         {
             _client = client;
-            _vaultAliases = vaultAliases;
+            _vaultAliases = vaultAliases ?? new Dictionary<string, string>();
         }
 
         public ReadKey ResolveSingleKey(string keySyntax)
