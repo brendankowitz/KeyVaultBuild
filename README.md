@@ -15,6 +15,7 @@ An example of how to do this is as follows:
 KeyVaultBuild.Cli.exe template -[configFile|c] "c:\full\path\to\App.config"
                                -[aadDirectory|d] <GUID>
                                -[vault|v] keyvaultName
+                               -[appsettings|a] ^appsettingspattern$
 ```
 
 ### Keytemplate syntax
