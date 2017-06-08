@@ -43,7 +43,7 @@
       Value="%(AsmInfo.Version)" />
  
     <Exec WorkingDirectory="$(BuildDir)Packages" 
-          Command="$(SolutionDir)\packages\NuGet.CommandLine.3.5.0\tools\nuget.exe pack $(PackageDir)temp\KeyVaultBuild\KeyVaultBuild.nuspec" />
+          Command="&quot;$(SolutionDir)packages\NuGet.CommandLine.3.5.0\tools\nuget.exe&quot; pack &quot;$(PackageDir)temp\KeyVaultBuild\KeyVaultBuild.nuspec&quot;" />
 
     <RemoveDir Directories="$(PackageDir)temp" />
     
