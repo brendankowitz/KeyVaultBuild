@@ -32,7 +32,7 @@ $importElement.Condition = $existsCondition
 $path = [System.IO.Path]
 $deployedTargetsPath = $path::Combine($path::GetDirectoryName($project.FileName), $TargetsFile)
 
-Write-Host "Found targets file: ${deployedAcomTargetsPath}"
+Write-Host "Found targets file: ${deployedTargetsPath}"
 
 [xml]$taskXml = Get-Content $deployedTargetsPath 
 $ns = New-Object System.Xml.XmlNamespaceManager -ArgumentList $taskXml.NameTable
