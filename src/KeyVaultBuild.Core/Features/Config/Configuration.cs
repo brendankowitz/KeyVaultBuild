@@ -7,6 +7,7 @@ namespace KeyVaultBuild.Features.Config
         private string _directory;
         private string _servicePrincipal;
         private string _servicePrincipalSecret;
+        private bool _alwaysPromptInteractiveAuth;
 
         public string Directory
         {
@@ -24,6 +25,12 @@ namespace KeyVaultBuild.Features.Config
         {
             get { return _servicePrincipalSecret; }
             set { _servicePrincipalSecret = value?.Trim(); }
+        }
+
+        public bool AlwaysPromptInteractiveAuth
+        {
+            get { return _alwaysPromptInteractiveAuth; }
+            set { _alwaysPromptInteractiveAuth = value; }
         }
 
         public IDictionary<string,string> VaultAliases { get; } = new Dictionary<string, string>();

@@ -11,6 +11,7 @@
     <KeyVaultBuild_Secret Condition=" '$(KeyVaultBuild_Secret)' == '' "></KeyVaultBuild_Secret>
     <KeyVaultBuild_DirectoryId Condition=" '$(KeyVaultBuild_DirectoryId)' == '' "></KeyVaultBuild_DirectoryId>
     <KeyVaultBuild_Debug Condition=" '$(KeyVaultBuild_Debug)' == '' "></KeyVaultBuild_Debug>
+    <KeyVaultBuild_AlwaysPromptAuth Condition=" '$(KeyVaultBuild_AlwaysPromptAuth)' == '' "></KeyVaultBuild_AlwaysPromptAuth>
   </PropertyGroup>
   <ItemGroup>
     <ConfigFilesToProcess Include="$(ProjectDir)\**\*.keyvault.template" />
@@ -23,7 +24,8 @@
       ClientId="$(KeyVaultBuild_ClientId)"
       Secret="$(KeyVaultBuild_Secret)" 
       DirectoryId="$(KeyVaultBuild_DirectoryId)"
-      DebugTask="$(KeyVaultBuild_Debug)" />
+      DebugTask="$(KeyVaultBuild_Debug)"
+      AlwaysPromptInteractiveAuth="$(KeyVaultBuild_AlwaysPromptAuth)" />
   </Target>
   <Target Name="KeyVaultBuildConfigFiles">
     <ItemGroup>

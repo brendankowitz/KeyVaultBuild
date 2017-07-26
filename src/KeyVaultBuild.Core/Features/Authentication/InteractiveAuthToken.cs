@@ -34,12 +34,13 @@ namespace KeyVaultBuild.Features.Authentication
             try
             {
                 var authContext = new AuthenticationContext($"https://login.windows.net/{_config.Directory}/oauth2/authorize", false);
-                var result = authContext.AcquireToken(resource, InteractiveAuthClientId, new Uri("urn:ietf:wg:oauth:2.0:oob"), PromptBehavior.Auto);
+                var result = authContext.AcquireToken(resource, InteractiveAuthClientId, new Uri("urn:ietf:wg:oauth:2.0:oob"), _config.AlwaysPromptInteractiveAuth ? PromptBehavior.Always : PromptBehavior.Auto);
                 _token = result.AccessToken;
                 _expiry = result.ExpiresOn;
             }
             catch (Exception ex)
             {
+                TokenCache.DefaultShared.Clear();
                 Log.Error(ex, "Failed to get auth token");
                 throw;
             }

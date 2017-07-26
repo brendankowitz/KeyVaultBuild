@@ -17,5 +17,8 @@ namespace KeyVaultBuild.Cli
 
         [Option('a', "appsettings", Separator = ',', Required = false, HelpText = "Which appsettings, comma separated, to push into keyvault. Regex formatted")]
         public IEnumerable<string> AppSettings { get; set; }
+
+        [Option('p', "promptauth",Required = false, HelpText = "Always prompt for auth, even if a token is still valid")]
+        public bool AlwaysPromptAuth { get; set; }
     }
 }
