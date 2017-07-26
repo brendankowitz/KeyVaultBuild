@@ -31,6 +31,12 @@ namespace KeyVaultBuild
             return this;
         }
 
+        public SecretServiceBuilder AlwaysPromptInteractiveAuth(bool promptAuth)
+        {
+            _config.AlwaysPromptInteractiveAuth = promptAuth;
+            return this;
+        }
+
         public ISecretService Build()
         {
             return new SecretService(_config);

@@ -24,6 +24,7 @@ namespace KeyVaultBuild.Cli
             {
                 var service = SecretServiceBuilder.Create()
                     .WithDirectory(opts.DirectoryId)
+                    .AlwaysPromptInteractiveAuth(opts.AlwaysPromptAuth)
                     .Build();
                 var writer = service.GetWriter(opts.Vault);
 

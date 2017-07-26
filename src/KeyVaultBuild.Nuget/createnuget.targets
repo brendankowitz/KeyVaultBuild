@@ -16,7 +16,7 @@
       <MainBinaries Include="$(BaseDir)KeyVaultBuild.Core\bin\$(Configuration)\**\*.*" />
       <ToolsFiles Include="$(BaseDir)KeyVaultBuild.Nuget\tools\**\*.*" />
       <ContentFiles Include="$(BaseDir)KeyVaultBuild.Nuget\content\**\*.*" />
-      <CliFiles Include="$(BaseDir)KeyVaultBuild.Cli\bin\$(Configuration)\**\*.*" />
+      <CliFiles Include="$(BaseDir)KeyVaultBuild.Cli\bin\$(Configuration)\*.*" />
     </ItemGroup>
 
     <RemoveDir Directories="$(PackageDir)" />

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using KeyVaultBuild.Features.Transformation;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace KeyVaultBuild.Features.Build
 {
@@ -23,9 +24,12 @@ namespace KeyVaultBuild.Features.Build
 
         public string DebugTask { get; set; }
 
+        public string AlwaysPromptInteractiveAuth { get; set; }
+
         public override bool Execute()
         {
-            var debug = string.Equals("true", DebugTask, StringComparison.OrdinalIgnoreCase);
+            var debug = string.Equals("true", DebugTask?.Trim(), StringComparison.OrdinalIgnoreCase);
+            var promptAuth = string.Equals("true", AlwaysPromptInteractiveAuth?.Trim(), StringComparison.OrdinalIgnoreCase);
             Config.Log.Information = x => Log.LogWarning(x);
             Config.Log.Error = (ex, m) => Log.LogError("Error while processing secrets from keyvault. " + Environment.NewLine + ex);
 
@@ -37,7 +41,13 @@ namespace KeyVaultBuild.Features.Build
                     Debugger.Break();
                 }
 
+                if (promptAuth)
+                {
+                    Log.LogWarning("KeyVaultBuildTask: Set to always prompting for auth information.");
+                }
+
                 var service = SecretServiceBuilder.Create()
+                    .AlwaysPromptInteractiveAuth(promptAuth)
                     .WithDirectory(DirectoryId)
                     .WithServicePrincipal(ClientId, Secret);
 
@@ -61,6 +71,7 @@ namespace KeyVaultBuild.Features.Build
             }
             catch(Exception ex)
             {
+                TokenCache.DefaultShared.Clear();
                 Config.Log.Error(ex, "Error occured processing secrets. ");
                 if (debug)
                     Debugger.Break();
