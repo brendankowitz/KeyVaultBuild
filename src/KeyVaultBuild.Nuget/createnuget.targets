@@ -8,7 +8,7 @@
     <MSBuildExtensions>$(SolutionDir)\packages\MSBuildTasks.1.5.0.235\tools\MSBuild.Community.Tasks.dll</MSBuildExtensions>
     <Version Condition="$(Version)==''">0.0.0.0</Version>
   </PropertyGroup>
- 
+
   <UsingTask AssemblyFile="$(MSBuildExtensions)" TaskName="MSBuild.Community.Tasks.XmlUpdate" />
 
   <Target Name="Package" AfterTargets="Build">
@@ -16,36 +16,36 @@
       <MainBinaries Include="$(BaseDir)KeyVaultBuild.Core\bin\$(Configuration)\**\*.*" />
       <ToolsFiles Include="$(BaseDir)KeyVaultBuild.Nuget\tools\**\*.*" />
       <ContentFiles Include="$(BaseDir)KeyVaultBuild.Nuget\content\**\*.*" />
-      <CliFiles Include="$(BaseDir)KeyVaultBuild.Cli\bin\$(Configuration)\*.*" />
+      <CliFiles Include="$(BaseDir)KeyVaultBuild.Cli\bin\$(Configuration)\**\*.*" />
     </ItemGroup>
 
     <RemoveDir Directories="$(PackageDir)" />
- 
+
     <!-- First copy the nuspec template files to the package dir -->
     <Copy SourceFiles="$(BaseDir)\KeyVaultBuild.Nuget\KeyVaultBuild.nuspec" DestinationFolder="$(PackageDir)temp\KeyVaultBuild" />
- 
+
     <!-- Copy the source files to the package dir -->
     <Copy SourceFiles="@(MainBinaries)" DestinationFolder="$(PackageDir)temp\KeyVaultBuild\tools\%(RecursiveDir)" />
     <Copy SourceFiles="@(ToolsFiles)" DestinationFolder="$(PackageDir)temp\KeyVaultBuild\tools\%(RecursiveDir)" />
     <Copy SourceFiles="@(ContentFiles)" DestinationFolder="$(PackageDir)temp\KeyVaultBuild\content\%(RecursiveDir)" />
     <Copy SourceFiles="@(CliFiles)" DestinationFolder="$(PackageDir)temp\KeyVaultBuild\tools\%(RecursiveDir)" />
- 
+
     <!-- Get the version number of the main FV assembly to insert into the nuspec files -->
     <GetAssemblyIdentity AssemblyFiles="$(PackageDir)temp\KeyVaultBuild\tools\KeyVaultBuild.dll">
       <Output TaskParameter="Assemblies" ItemName="AsmInfo" />
     </GetAssemblyIdentity>
- 
+
     <!-- insert the version number into the nuspec files -->
     <XmlUpdate
       Namespace="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"
       XmlFileName="$(PackageDir)temp\KeyVaultBuild\KeyVaultBuild.nuspec"
       XPath="/package/metadata/version"
       Value="%(AsmInfo.Version)" />
- 
-    <Exec WorkingDirectory="$(BuildDir)Packages" 
+
+    <Exec WorkingDirectory="$(BuildDir)Packages"
           Command="&quot;$(SolutionDir)packages\NuGet.CommandLine.3.5.0\tools\nuget.exe&quot; pack &quot;$(PackageDir)temp\KeyVaultBuild\KeyVaultBuild.nuspec&quot;" />
 
     <RemoveDir Directories="$(PackageDir)temp" />
-    
+
   </Target>
 </Project>

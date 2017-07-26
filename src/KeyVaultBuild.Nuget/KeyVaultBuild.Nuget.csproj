@@ -51,6 +51,10 @@
     <None Include="tools\uninstall.ps1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\KeyVaultBuild.Cli\KeyVaultBuild.Cli.csproj">
+      <Project>{7fe96355-4846-47ea-829c-75e150443e39}</Project>
+      <Name>KeyVaultBuild.Cli</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KeyVaultBuild.Core\KeyVaultBuild.csproj">
       <Project>{a3f02ebc-9146-4a94-9e56-36eb8bb29492}</Project>
       <Name>KeyVaultBuild</Name>
